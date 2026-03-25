@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, ArrowLeft, Trash2 } from 'lucide-react';
+import { Heart, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { ProductCard } from '../components/ProductCard';
@@ -19,7 +19,7 @@ export const Favorites = () => {
       const response = await axios.get(`${API}/favorites`);
       setFavorites(response.data);
     } catch (error) {
-      toast.error('Ошибка загрузки избранного');
+      toast.error('Помилка завантаження обраного');
     } finally {
       setLoading(false);
     }
@@ -56,17 +56,17 @@ export const Favorites = () => {
         className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#474A51] hover:text-[#0A0A0A] mb-8"
       >
         <ArrowLeft size={16} />
-        На главную
+        На головну
       </Link>
 
-      <h1 className="text-3xl font-bold uppercase tracking-tight mb-8">Избранное</h1>
+      <h1 className="text-3xl font-bold uppercase tracking-tight mb-8">Обране</h1>
 
       {favorites.length === 0 ? (
         <div className="text-center py-16 bg-white border border-[#EBECEE]">
           <Heart size={64} className="mx-auto text-[#D1D3D8] mb-4" />
-          <p className="text-[#474A51] mb-4">В избранном пока ничего нет</p>
+          <p className="text-[#474A51] mb-4">В обраному поки нічого немає</p>
           <Link to="/catalog">
-            <button className="btn-primary">Перейти в каталог</button>
+            <button className="btn-primary">Перейти до каталогу</button>
           </Link>
         </div>
       ) : (

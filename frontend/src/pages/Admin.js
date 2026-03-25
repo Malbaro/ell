@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 import { 
-  LayoutDashboard, Package, ShoppingCart, Users, Settings, LogOut, 
-  Plus, Edit2, Trash2, Search, ChevronDown, Loader2, X 
+  LayoutDashboard, Package, ShoppingCart, LogOut, 
+  Plus, Edit2, Trash2, Loader2
 } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
@@ -26,20 +26,12 @@ import { toast } from 'sonner';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const categories = [
-  { id: 'engines', name: 'Двигатели' },
-  { id: 'transmission', name: 'Трансмиссия' },
-  { id: 'hydraulics', name: 'Гидравлика' },
-  { id: 'electrical', name: 'Электрика' },
-  { id: 'chassis', name: 'Ходовая' },
+  { id: 'engines', name: 'Двигуни' },
+  { id: 'transmission', name: 'Трансмісія' },
+  { id: 'hydraulics', name: 'Гідравліка' },
+  { id: 'electrical', name: 'Електрика' },
+  { id: 'chassis', name: 'Ходова' },
 ];
-
-const statusLabels = {
-  pending: { label: 'Ожидает', class: 'status-pending' },
-  processing: { label: 'Обработка', class: 'status-processing' },
-  shipped: { label: 'Отправлен', class: 'status-shipped' },
-  delivered: { label: 'Доставлен', class: 'status-delivered' },
-  cancelled: { label: 'Отменён', class: 'status-cancelled' },
-};
 
 // Dashboard Component
 const Dashboard = () => {
@@ -52,7 +44,7 @@ const Dashboard = () => {
         const response = await axios.get(`${API}/admin/stats`);
         setStats(response.data);
       } catch (error) {
-        toast.error('Ошибка загрузки статистики');
+        toast.error('Помилка завантаження статистики');
       } finally {
         setLoading(false);
       }
@@ -68,23 +60,23 @@ const Dashboard = () => {
 
   return (
     <div data-testid="admin-dashboard">
-      <h2 className="text-2xl font-bold uppercase tracking-tight mb-6">Панель управления</h2>
+      <h2 className="text-2xl font-bold uppercase tracking-tight mb-6">Панель керування</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-white border border-[#EBECEE] p-6">
-          <p className="label-industrial mb-2">Товаров</p>
+          <p className="label-industrial mb-2">Товарів</p>
           <p className="font-mono text-3xl font-bold" data-testid="stats-products">{stats?.total_products || 0}</p>
         </div>
         <div className="bg-white border border-[#EBECEE] p-6">
-          <p className="label-industrial mb-2">Заказов</p>
+          <p className="label-industrial mb-2">Замовлень</p>
           <p className="font-mono text-3xl font-bold" data-testid="stats-orders">{stats?.total_orders || 0}</p>
         </div>
         <div className="bg-white border border-[#EBECEE] p-6">
-          <p className="label-industrial mb-2">Пользователей</p>
+          <p className="label-industrial mb-2">Користувачів</p>
           <p className="font-mono text-3xl font-bold" data-testid="stats-users">{stats?.total_users || 0}</p>
         </div>
         <div className="bg-white border border-[#EBECEE] p-6">
-          <p className="label-industrial mb-2">Выручка</p>
+          <p className="label-industrial mb-2">Виручка</p>
           <p className="font-mono text-3xl font-bold text-[#34C759]" data-testid="stats-revenue">
             {formatPrice(stats?.total_revenue || 0)} ₴
           </p>
@@ -109,7 +101,7 @@ const Products = () => {
       const response = await axios.get(`${API}/products`);
       setProducts(response.data);
     } catch (error) {
-      toast.error('Ошибка загрузки товаров');
+      toast.error('Помилка завантаження товарів');
     } finally {
       setLoading(false);
     }
@@ -124,17 +116,17 @@ const Products = () => {
     try {
       if (editingProduct) {
         await axios.put(`${API}/admin/products/${editingProduct.id}`, formData);
-        toast.success('Товар обновлён');
+        toast.success('Товар оновлено');
       } else {
         await axios.post(`${API}/admin/products`, formData);
-        toast.success('Товар создан');
+        toast.success('Товар створено');
       }
       setIsDialogOpen(false);
       setEditingProduct(null);
       setFormData({ name: '', description: '', price: 500, category: 'engines', sku: '', stock: 0, image_url: '' });
       fetchProducts();
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Ошибка');
+      toast.error(error.response?.data?.detail || 'Помилка');
     }
   };
 
@@ -153,13 +145,13 @@ const Products = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('Удалить товар?')) return;
+    if (!window.confirm('Видалити товар?')) return;
     try {
       await axios.delete(`${API}/admin/products/${id}`);
-      toast.success('Товар удалён');
+      toast.success('Товар видалено');
       fetchProducts();
     } catch (error) {
-      toast.error('Ошибка удаления');
+      toast.error('Помилка видалення');
     }
   };
 
@@ -168,7 +160,7 @@ const Products = () => {
   return (
     <div data-testid="admin-products">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold uppercase tracking-tight">Товары</h2>
+        <h2 className="text-2xl font-bold uppercase tracking-tight">Товари</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button 
@@ -180,16 +172,16 @@ const Products = () => {
               data-testid="add-product-btn"
             >
               <Plus size={18} className="mr-2" />
-              Добавить товар
+              Додати товар
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-lg rounded-none">
             <DialogHeader>
-              <DialogTitle>{editingProduct ? 'Редактировать товар' : 'Новый товар'}</DialogTitle>
+              <DialogTitle>{editingProduct ? 'Редагувати товар' : 'Новий товар'}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="label-industrial mb-1 block">Название *</label>
+                <label className="label-industrial mb-1 block">Назва *</label>
                 <input
                   type="text"
                   value={formData.name}
@@ -200,7 +192,7 @@ const Products = () => {
                 />
               </div>
               <div>
-                <label className="label-industrial mb-1 block">Описание *</label>
+                <label className="label-industrial mb-1 block">Опис *</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
@@ -212,7 +204,7 @@ const Products = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="label-industrial mb-1 block">Цена (₴) *</label>
+                  <label className="label-industrial mb-1 block">Ціна (₴) *</label>
                   <input
                     type="number"
                     min="500"
@@ -225,7 +217,7 @@ const Products = () => {
                   />
                 </div>
                 <div>
-                  <label className="label-industrial mb-1 block">Категория *</label>
+                  <label className="label-industrial mb-1 block">Категорія *</label>
                   <Select value={formData.category} onValueChange={(v) => setFormData({...formData, category: v})}>
                     <SelectTrigger className="rounded-none" data-testid="product-category-select">
                       <SelectValue />
@@ -249,7 +241,7 @@ const Products = () => {
                   />
                 </div>
                 <div>
-                  <label className="label-industrial mb-1 block">Наличие (шт)</label>
+                  <label className="label-industrial mb-1 block">Наявність (шт)</label>
                   <input
                     type="number"
                     min="0"
@@ -261,7 +253,7 @@ const Products = () => {
                 </div>
               </div>
               <div>
-                <label className="label-industrial mb-1 block">URL изображения</label>
+                <label className="label-industrial mb-1 block">URL зображення</label>
                 <input
                   type="url"
                   value={formData.image_url}
@@ -272,7 +264,7 @@ const Products = () => {
                 />
               </div>
               <Button type="submit" className="w-full btn-primary" data-testid="save-product-btn">
-                {editingProduct ? 'Сохранить' : 'Создать'}
+                {editingProduct ? 'Зберегти' : 'Створити'}
               </Button>
             </form>
           </DialogContent>
@@ -287,11 +279,11 @@ const Products = () => {
             <thead>
               <tr>
                 <th>Артикул</th>
-                <th>Название</th>
-                <th>Категория</th>
-                <th>Цена</th>
-                <th>Наличие</th>
-                <th>Действия</th>
+                <th>Назва</th>
+                <th>Категорія</th>
+                <th>Ціна</th>
+                <th>Наявність</th>
+                <th>Дії</th>
               </tr>
             </thead>
             <tbody>
@@ -332,7 +324,7 @@ const AdminOrders = () => {
       const response = await axios.get(`${API}/admin/orders`);
       setOrders(response.data);
     } catch (error) {
-      toast.error('Ошибка загрузки заказов');
+      toast.error('Помилка завантаження замовлень');
     } finally {
       setLoading(false);
     }
@@ -345,10 +337,10 @@ const AdminOrders = () => {
   const updateStatus = async (orderId, status) => {
     try {
       await axios.put(`${API}/admin/orders/${orderId}/status?status=${status}`);
-      toast.success('Статус обновлён');
+      toast.success('Статус оновлено');
       fetchOrders();
     } catch (error) {
-      toast.error('Ошибка обновления');
+      toast.error('Помилка оновлення');
     }
   };
 
@@ -357,13 +349,13 @@ const AdminOrders = () => {
 
   return (
     <div data-testid="admin-orders">
-      <h2 className="text-2xl font-bold uppercase tracking-tight mb-6">Заказы</h2>
+      <h2 className="text-2xl font-bold uppercase tracking-tight mb-6">Замовлення</h2>
       
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" size={40} /></div>
       ) : orders.length === 0 ? (
         <div className="text-center py-16 bg-white border border-[#EBECEE]">
-          <p className="text-[#474A51]">Заказов пока нет</p>
+          <p className="text-[#474A51]">Замовлень поки немає</p>
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -372,10 +364,10 @@ const AdminOrders = () => {
               <tr>
                 <th>ID</th>
                 <th>Дата</th>
-                <th>Товаров</th>
-                <th>Сумма</th>
+                <th>Товарів</th>
+                <th>Сума</th>
                 <th>Статус</th>
-                <th>Адрес</th>
+                <th>Адреса</th>
               </tr>
             </thead>
             <tbody>
@@ -391,11 +383,11 @@ const AdminOrders = () => {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className="rounded-none">
-                        <SelectItem value="pending">Ожидает</SelectItem>
-                        <SelectItem value="processing">Обработка</SelectItem>
-                        <SelectItem value="shipped">Отправлен</SelectItem>
-                        <SelectItem value="delivered">Доставлен</SelectItem>
-                        <SelectItem value="cancelled">Отменён</SelectItem>
+                        <SelectItem value="pending">Очікує</SelectItem>
+                        <SelectItem value="processing">Обробка</SelectItem>
+                        <SelectItem value="shipped">Відправлено</SelectItem>
+                        <SelectItem value="delivered">Доставлено</SelectItem>
+                        <SelectItem value="cancelled">Скасовано</SelectItem>
                       </SelectContent>
                     </Select>
                   </td>
@@ -412,7 +404,7 @@ const AdminOrders = () => {
 
 // Main Admin Component
 export const Admin = () => {
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -426,8 +418,8 @@ export const Admin = () => {
 
   const navItems = [
     { path: '/admin', icon: LayoutDashboard, label: 'Дашборд' },
-    { path: '/admin/products', icon: Package, label: 'Товары' },
-    { path: '/admin/orders', icon: ShoppingCart, label: 'Заказы' },
+    { path: '/admin/products', icon: Package, label: 'Товари' },
+    { path: '/admin/orders', icon: ShoppingCart, label: 'Замовлення' },
   ];
 
   return (
@@ -436,8 +428,8 @@ export const Admin = () => {
       <aside className="admin-sidebar hidden md:flex flex-col">
         <div className="p-4 border-b border-gray-800">
           <div className="flex items-center gap-2">
-            <div className="bg-[#FF3B30] text-white font-black px-2 py-1">ЭЛЛ</div>
-            <span className="font-bold text-sm">АДМИН</span>
+            <div className="bg-[#FF3B30] text-white font-black px-2 py-1">ЕЛЛ</div>
+            <span className="font-bold text-sm">АДМІН</span>
           </div>
         </div>
 
@@ -472,8 +464,8 @@ export const Admin = () => {
         {/* Mobile Header */}
         <div className="md:hidden bg-[#0A0A0A] text-white p-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-[#FF3B30] text-white font-black px-2 py-1">ЭЛЛ</div>
-            <span className="font-bold text-sm">АДМИН</span>
+            <div className="bg-[#FF3B30] text-white font-black px-2 py-1">ЕЛЛ</div>
+            <span className="font-bold text-sm">АДМІН</span>
           </div>
           <Link to="/" className="text-sm">На сайт</Link>
         </div>

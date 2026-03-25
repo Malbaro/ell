@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, X, ChevronDown, Loader2 } from 'lucide-react';
+import { Filter, X, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { ProductCard } from '../components/ProductCard';
 import { Button } from '../components/ui/button';
@@ -17,11 +17,11 @@ import { Checkbox } from '../components/ui/checkbox';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const categories = [
-  { id: 'engines', name: 'Двигатели и комплектующие' },
-  { id: 'transmission', name: 'Трансмиссия' },
-  { id: 'hydraulics', name: 'Гидравлика' },
-  { id: 'electrical', name: 'Электрика' },
-  { id: 'chassis', name: 'Ходовая часть' },
+  { id: 'engines', name: 'Двигуни та комплектуючі' },
+  { id: 'transmission', name: 'Трансмісія' },
+  { id: 'hydraulics', name: 'Гідравліка' },
+  { id: 'electrical', name: 'Електрика' },
+  { id: 'chassis', name: 'Ходова частина' },
 ];
 
 export const Catalog = () => {
@@ -124,7 +124,7 @@ export const Catalog = () => {
         <div>
           <h1 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight">Каталог</h1>
           <p className="text-[#474A51] mt-1">
-            {loading ? 'Загрузка...' : `Найдено ${products.length} товаров`}
+            {loading ? 'Завантаження...' : `Знайдено ${products.length} товарів`}
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export const Catalog = () => {
             data-testid="filter-toggle-btn"
           >
             <Filter size={18} />
-            Фильтры
+            Фільтри
             {activeFiltersCount > 0 && (
               <span className="bg-[#FF3B30] text-white w-5 h-5 flex items-center justify-center text-xs">
                 {activeFiltersCount}
@@ -147,12 +147,12 @@ export const Catalog = () => {
           {/* Sort */}
           <Select value={sortBy} onValueChange={setSortBy}>
             <SelectTrigger className="w-[180px] rounded-none border-[#EBECEE]" data-testid="sort-select">
-              <SelectValue placeholder="Сортировка" />
+              <SelectValue placeholder="Сортування" />
             </SelectTrigger>
             <SelectContent className="rounded-none">
-              <SelectItem value="name">По названию</SelectItem>
-              <SelectItem value="price_asc">Сначала дешевые</SelectItem>
-              <SelectItem value="price_desc">Сначала дорогие</SelectItem>
+              <SelectItem value="name">За назвою</SelectItem>
+              <SelectItem value="price_asc">Спочатку дешевші</SelectItem>
+              <SelectItem value="price_desc">Спочатку дорожчі</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -166,26 +166,26 @@ export const Catalog = () => {
         >
           <div className="filter-sidebar sticky top-24">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-bold uppercase tracking-wider text-sm">Фильтры</h3>
+              <h3 className="font-bold uppercase tracking-wider text-sm">Фільтри</h3>
               {activeFiltersCount > 0 && (
                 <button
                   onClick={clearFilters}
                   className="text-[#FF3B30] text-xs uppercase font-bold hover:underline"
                   data-testid="clear-filters-btn"
                 >
-                  Сбросить
+                  Скинути
                 </button>
               )}
             </div>
 
             {/* Search */}
             <div className="mb-6">
-              <label className="label-industrial mb-2 block">Поиск</label>
+              <label className="label-industrial mb-2 block">Пошук</label>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Артикул или название"
+                placeholder="Артикул або назва"
                 className="w-full input-industrial"
                 data-testid="filter-search-input"
               />
@@ -193,7 +193,7 @@ export const Catalog = () => {
 
             {/* Categories */}
             <div className="mb-6">
-              <label className="label-industrial mb-3 block">Категории</label>
+              <label className="label-industrial mb-3 block">Категорії</label>
               <div className="space-y-2">
                 {categories.map((cat) => (
                   <label 
@@ -216,7 +216,7 @@ export const Catalog = () => {
 
             {/* Price Range */}
             <div className="mb-6">
-              <label className="label-industrial mb-3 block">Цена (₴)</label>
+              <label className="label-industrial mb-3 block">Ціна (₴)</label>
               <div className="px-2">
                 <Slider
                   min={500}
@@ -256,7 +256,7 @@ export const Catalog = () => {
               onClick={() => setShowFilters(false)}
               className="md:hidden w-full btn-primary"
             >
-              Применить
+              Застосувати
             </button>
           </div>
         </aside>
@@ -282,7 +282,7 @@ export const Catalog = () => {
               })}
               {searchQuery && (
                 <span className="flex items-center gap-1 bg-[#F7F7F8] border border-[#EBECEE] px-3 py-1 text-sm">
-                  Поиск: {searchQuery}
+                  Пошук: {searchQuery}
                   <button onClick={() => setSearchQuery('')}>
                     <X size={14} />
                   </button>
@@ -297,9 +297,9 @@ export const Catalog = () => {
             </div>
           ) : products.length === 0 ? (
             <div className="text-center py-20" data-testid="no-products">
-              <p className="text-[#474A51] mb-4">Товары не найдены</p>
+              <p className="text-[#474A51] mb-4">Товари не знайдено</p>
               <Button onClick={clearFilters} className="btn-secondary">
-                Сбросить фильтры
+                Скинути фільтри
               </Button>
             </div>
           ) : (

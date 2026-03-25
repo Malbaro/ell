@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
@@ -26,19 +26,19 @@ export const Auth = () => {
     try {
       if (isLogin) {
         await login(formData.email, formData.password);
-        toast.success('Добро пожаловать!');
+        toast.success('Ласкаво просимо!');
       } else {
         if (!formData.name) {
-          toast.error('Введите имя');
+          toast.error('Введіть ім\'я');
           setLoading(false);
           return;
         }
         await register(formData.email, formData.password, formData.name, formData.phone);
-        toast.success('Регистрация успешна!');
+        toast.success('Реєстрація успішна!');
       }
       navigate('/');
     } catch (error) {
-      const message = error.response?.data?.detail || 'Ошибка авторизации';
+      const message = error.response?.data?.detail || 'Помилка авторизації';
       toast.error(message);
     } finally {
       setLoading(false);
@@ -57,16 +57,16 @@ export const Auth = () => {
           className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#474A51] hover:text-[#0A0A0A] mb-8"
         >
           <ArrowLeft size={16} />
-          На главную
+          На головну
         </Link>
 
         <div className="auth-form">
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-2">
-              <div className="bg-[#FF3B30] text-white font-black text-xl px-3 py-2">ЭЛЛ</div>
+              <div className="bg-[#FF3B30] text-white font-black text-xl px-3 py-2">ЕЛЛ</div>
               <div>
-                <div className="font-bold text-lg tracking-tight">ЗАПЧАСТИ</div>
+                <div className="font-bold text-lg tracking-tight">ЗАПЧАСТИНИ</div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ export const Auth = () => {
               }`}
               data-testid="login-tab"
             >
-              Вход
+              Вхід
             </button>
             <button
               onClick={() => setIsLogin(false)}
@@ -89,7 +89,7 @@ export const Auth = () => {
               }`}
               data-testid="register-tab"
             >
-              Регистрация
+              Реєстрація
             </button>
           </div>
 
@@ -97,13 +97,13 @@ export const Auth = () => {
             {!isLogin && (
               <>
                 <div>
-                  <label className="label-industrial mb-2 block">Имя *</label>
+                  <label className="label-industrial mb-2 block">Ім'я *</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Иван Иванов"
+                    placeholder="Іван Іванов"
                     className="w-full input-industrial"
                     required={!isLogin}
                     data-testid="name-input"
@@ -116,7 +116,7 @@ export const Auth = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+380 (50) 123-45-67"
+                    placeholder="+380 (96) 567-43-76"
                     className="w-full input-industrial"
                     data-testid="phone-input"
                   />
@@ -168,14 +168,14 @@ export const Auth = () => {
               className="w-full btn-primary h-12"
               data-testid="submit-btn"
             >
-              {loading ? 'Загрузка...' : isLogin ? 'Войти' : 'Зарегистрироваться'}
+              {loading ? 'Завантаження...' : isLogin ? 'Увійти' : 'Зареєструватися'}
             </Button>
           </form>
 
           {/* Demo credentials */}
           {isLogin && (
             <div className="mt-6 p-4 bg-[#F7F7F8] border border-[#EBECEE]">
-              <p className="label-industrial mb-2">Демо вход (Админ):</p>
+              <p className="label-industrial mb-2">Демо вхід (Адмін):</p>
               <p className="font-mono text-sm">admin@ell-parts.ua</p>
               <p className="font-mono text-sm">admin123</p>
             </div>

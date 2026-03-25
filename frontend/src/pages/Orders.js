@@ -8,11 +8,11 @@ import { toast } from 'sonner';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const statusLabels = {
-  pending: { label: 'Ожидает', class: 'status-pending' },
-  processing: { label: 'Обработка', class: 'status-processing' },
-  shipped: { label: 'Отправлен', class: 'status-shipped' },
-  delivered: { label: 'Доставлен', class: 'status-delivered' },
-  cancelled: { label: 'Отменён', class: 'status-cancelled' },
+  pending: { label: 'Очікує', class: 'status-pending' },
+  processing: { label: 'Обробка', class: 'status-processing' },
+  shipped: { label: 'Відправлено', class: 'status-shipped' },
+  delivered: { label: 'Доставлено', class: 'status-delivered' },
+  cancelled: { label: 'Скасовано', class: 'status-cancelled' },
 };
 
 export const Orders = () => {
@@ -32,7 +32,7 @@ export const Orders = () => {
         const response = await axios.get(`${API}/orders`);
         setOrders(response.data);
       } catch (error) {
-        toast.error('Ошибка загрузки заказов');
+        toast.error('Помилка завантаження замовлень');
       } finally {
         setLoading(false);
       }
@@ -73,17 +73,17 @@ export const Orders = () => {
         className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#474A51] hover:text-[#0A0A0A] mb-8"
       >
         <ArrowLeft size={16} />
-        На главную
+        На головну
       </Link>
 
-      <h1 className="text-3xl font-bold uppercase tracking-tight mb-8">Мои заказы</h1>
+      <h1 className="text-3xl font-bold uppercase tracking-tight mb-8">Мої замовлення</h1>
 
       {orders.length === 0 ? (
         <div className="text-center py-16 bg-white border border-[#EBECEE]">
           <Package size={64} className="mx-auto text-[#D1D3D8] mb-4" />
-          <p className="text-[#474A51] mb-4">У вас пока нет заказов</p>
+          <p className="text-[#474A51] mb-4">У вас поки немає замовлень</p>
           <Link to="/catalog">
-            <button className="btn-primary">Перейти в каталог</button>
+            <button className="btn-primary">Перейти до каталогу</button>
           </Link>
         </div>
       ) : (
@@ -109,7 +109,7 @@ export const Orders = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="label-industrial">Сумма заказа</p>
+                  <p className="label-industrial">Сума замовлення</p>
                   <p className="font-mono font-bold text-xl">{formatPrice(order.total)} ₴</p>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export const Orders = () => {
               {/* Items List */}
               <details className="mt-4">
                 <summary className="cursor-pointer text-sm font-bold uppercase text-[#474A51] hover:text-[#0A0A0A] flex items-center gap-1">
-                  Товары ({order.items.length})
+                  Товари ({order.items.length})
                   <ChevronRight size={16} className="transition-transform" />
                 </summary>
                 <div className="mt-3 space-y-2">

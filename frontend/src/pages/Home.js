@@ -8,11 +8,11 @@ import { Button } from '../components/ui/button';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const categories = [
-  { id: 'engines', name: 'Двигатели и комплектующие', icon: Wrench, image: 'https://images.pexels.com/photos/190539/pexels-photo-190539.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { id: 'transmission', name: 'Трансмиссия', icon: Cog, image: 'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { id: 'hydraulics', name: 'Гидравлика', icon: Droplet, image: 'https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { id: 'electrical', name: 'Электрика', icon: Zap, image: 'https://images.pexels.com/photos/3846205/pexels-photo-3846205.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { id: 'chassis', name: 'Ходовая часть', icon: Settings2, image: 'https://images.pexels.com/photos/36650737/pexels-photo-36650737.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { id: 'engines', name: 'Двигуни та комплектуючі', icon: Wrench, image: 'https://images.pexels.com/photos/190539/pexels-photo-190539.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { id: 'transmission', name: 'Трансмісія', icon: Cog, image: 'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { id: 'hydraulics', name: 'Гідравліка', icon: Droplet, image: 'https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { id: 'electrical', name: 'Електрика', icon: Zap, image: 'https://images.pexels.com/photos/3846205/pexels-photo-3846205.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { id: 'chassis', name: 'Ходова частина', icon: Settings2, image: 'https://images.pexels.com/photos/36650737/pexels-photo-36650737.jpeg?auto=compress&cs=tinysrgb&w=600' },
 ];
 
 export const Home = () => {
@@ -47,25 +47,24 @@ export const Home = () => {
         <div className="hero-overlay" />
         <div className="hero-content max-w-7xl mx-auto w-full px-4">
           <span className="label-industrial text-white/60 mb-4 block">
-            Официальный поставщик
+            Офіційний постачальник
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
-            Запчасти<br />для техники ЭЛЛ
+            Запчастини<br />для техніки ЕЛЛ
           </h1>
           <p className="text-white/80 text-lg mb-8 max-w-xl">
-            Оригинальные комплектующие и надежные аналоги. Цены от 500 до 30 000 грн. 
-            Доставка по всей Украине.
+            Оригінальні комплектуючі та надійні аналоги. Доставка Новою Поштою по всій Україні.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/catalog">
               <Button className="btn-primary h-14 px-8 text-base" data-testid="hero-catalog-btn">
-                Перейти в каталог
+                Перейти до каталогу
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
             <Link to="/auth">
               <Button className="btn-secondary h-14 px-8 text-base border-white text-white hover:bg-white hover:text-[#0A0A0A]">
-                Регистрация
+                Реєстрація
               </Button>
             </Link>
           </div>
@@ -81,8 +80,8 @@ export const Home = () => {
                 <Truck size={24} className="text-[#FF3B30]" />
               </div>
               <div>
-                <h3 className="font-bold text-sm uppercase">Быстрая доставка</h3>
-                <p className="text-sm text-[#474A51]">По всей Украине за 1-3 дня</p>
+                <h3 className="font-bold text-sm uppercase">Швидка доставка</h3>
+                <p className="text-sm text-[#474A51]">Новою Поштою по всій Україні</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4">
@@ -90,8 +89,8 @@ export const Home = () => {
                 <Shield size={24} className="text-[#FF3B30]" />
               </div>
               <div>
-                <h3 className="font-bold text-sm uppercase">Гарантия качества</h3>
-                <p className="text-sm text-[#474A51]">Официальная гарантия от 12 мес</p>
+                <h3 className="font-bold text-sm uppercase">Гарантія якості</h3>
+                <p className="text-sm text-[#474A51]">Офіційна гарантія від 12 міс</p>
               </div>
             </div>
             <div className="flex items-center gap-4 p-4">
@@ -99,8 +98,8 @@ export const Home = () => {
                 <Headphones size={24} className="text-[#FF3B30]" />
               </div>
               <div>
-                <h3 className="font-bold text-sm uppercase">Поддержка 24/7</h3>
-                <p className="text-sm text-[#474A51]">Консультация специалистов</p>
+                <h3 className="font-bold text-sm uppercase">Підтримка 24/7</h3>
+                <p className="text-sm text-[#474A51]">Консультація спеціалістів</p>
               </div>
             </div>
           </div>
@@ -110,9 +109,9 @@ export const Home = () => {
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 py-12" data-testid="categories-section">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">Категории</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">Категорії</h2>
           <Link to="/catalog" className="nav-link flex items-center gap-2">
-            Все товары <ArrowRight size={16} />
+            Усі товари <ArrowRight size={16} />
           </Link>
         </div>
         
@@ -145,9 +144,9 @@ export const Home = () => {
       {/* Products */}
       <section className="max-w-7xl mx-auto px-4 py-12" data-testid="products-section">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">Популярные товары</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">Популярні товари</h2>
           <Link to="/catalog" className="nav-link flex items-center gap-2">
-            Смотреть все <ArrowRight size={16} />
+            Дивитись усі <ArrowRight size={16} />
           </Link>
         </div>
 
@@ -178,21 +177,21 @@ export const Home = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-tight mb-4">
-                Нужна консультация?
+                Потрібна консультація?
               </h2>
               <p className="text-gray-400 mb-6">
-                Наши специалисты помогут подобрать нужные запчасти и ответят на все вопросы. 
-                Звоните или оставьте заявку.
+                Наші спеціалісти допоможуть підібрати потрібні запчастини та дадуть відповідь на всі питання. 
+                Телефонуйте або залиште заявку.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="tel:+380501234567">
+                <a href="tel:+380965674376">
                   <Button className="btn-primary h-12">
-                    +380 (50) 123-45-67
+                    +380 (96) 567-43-76
                   </Button>
                 </a>
                 <Link to="/catalog">
                   <Button className="btn-secondary border-white text-white hover:bg-white hover:text-[#0A0A0A] h-12">
-                    Каталог товаров
+                    Каталог товарів
                   </Button>
                 </Link>
               </div>
@@ -200,9 +199,9 @@ export const Home = () => {
             <div className="flex justify-center md:justify-end">
               <div className="bg-white/10 p-8 max-w-sm">
                 <div className="font-mono text-5xl font-bold text-[#FF3B30] mb-2">500+</div>
-                <p className="text-gray-400">товаров в наличии</p>
+                <p className="text-gray-400">товарів в наявності</p>
                 <div className="font-mono text-5xl font-bold text-[#FF3B30] mb-2 mt-6">24/7</div>
-                <p className="text-gray-400">поддержка клиентов</p>
+                <p className="text-gray-400">підтримка клієнтів</p>
               </div>
             </div>
           </div>

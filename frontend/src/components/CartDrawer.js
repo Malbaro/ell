@@ -25,14 +25,14 @@ export const CartDrawer = () => {
           <SheetHeader className="p-6 border-b border-[#EBECEE]">
             <SheetTitle className="flex items-center gap-2 text-left font-bold uppercase tracking-wide">
               <ShoppingBag size={20} />
-              Корзина ({cart.items.length})
+              Кошик ({cart.items.length})
             </SheetTitle>
           </SheetHeader>
 
           {cart.items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
               <ShoppingBag size={64} className="text-[#D1D3D8] mb-4" />
-              <p className="text-[#474A51] mb-4">Ваша корзина пуста</p>
+              <p className="text-[#474A51] mb-4">Ваш кошик порожній</p>
               <Button
                 onClick={() => {
                   setIsCartOpen(false);
@@ -41,7 +41,7 @@ export const CartDrawer = () => {
                 className="btn-secondary"
                 data-testid="continue-shopping-btn"
               >
-                Перейти в каталог
+                Перейти до каталогу
               </Button>
             </div>
           ) : (
@@ -104,7 +104,7 @@ export const CartDrawer = () => {
 
               <div className="border-t border-[#EBECEE] p-6 bg-white">
                 <div className="flex justify-between items-center mb-4">
-                  <span className="label-industrial">Итого:</span>
+                  <span className="label-industrial">Разом:</span>
                   <span className="font-mono font-bold text-2xl" data-testid="cart-total">
                     {formatPrice(cart.total)} ₴
                   </span>
@@ -115,14 +115,14 @@ export const CartDrawer = () => {
                   className="w-full btn-primary h-12"
                   data-testid="checkout-btn"
                 >
-                  Оформить заказ
+                  Оформити замовлення
                 </Button>
                 
                 <button
                   onClick={() => setIsCartOpen(false)}
                   className="w-full mt-2 text-center text-sm text-[#474A51] hover:text-[#0A0A0A] py-2"
                 >
-                  Продолжить покупки
+                  Продовжити покупки
                 </button>
               </div>
             </>

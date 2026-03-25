@@ -9,11 +9,11 @@ import axios from 'axios';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const categoryNames = {
-  engines: 'Двигатели',
-  transmission: 'Трансмиссия',
-  hydraulics: 'Гидравлика',
-  electrical: 'Электрика',
-  chassis: 'Ходовая',
+  engines: 'Двигуни',
+  transmission: 'Трансмісія',
+  hydraulics: 'Гідравліка',
+  electrical: 'Електрика',
+  chassis: 'Ходова',
 };
 
 export const ProductCard = ({ product, onFavoriteToggle }) => {
@@ -31,16 +31,16 @@ export const ProductCard = ({ product, onFavoriteToggle }) => {
     e.stopPropagation();
     
     if (!isAuthenticated) {
-      toast.error('Войдите для добавления в корзину');
+      toast.error('Увійдіть для додавання в кошик');
       return;
     }
 
     try {
       setLoading(true);
       await addToCart(product.id);
-      toast.success('Добавлено в корзину');
+      toast.success('Додано до кошика');
     } catch (error) {
-      toast.error('Ошибка при добавлении');
+      toast.error('Помилка при додаванні');
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,7 @@ export const ProductCard = ({ product, onFavoriteToggle }) => {
     e.stopPropagation();
 
     if (!isAuthenticated) {
-      toast.error('Войдите для добавления в избранное');
+      toast.error('Увійдіть для додавання в обране');
       return;
     }
 
@@ -59,18 +59,18 @@ export const ProductCard = ({ product, onFavoriteToggle }) => {
       if (isFavorite) {
         await axios.delete(`${API}/favorites/${product.id}`);
         setIsFavorite(false);
-        toast.success('Удалено из избранного');
+        toast.success('Видалено з обраного');
       } else {
         await axios.post(`${API}/favorites/${product.id}`);
         setIsFavorite(true);
-        toast.success('Добавлено в избранное');
+        toast.success('Додано до обраного');
       }
       onFavoriteToggle?.();
     } catch (error) {
       if (error.response?.status === 400) {
         setIsFavorite(true);
       } else {
-        toast.error('Ошибка');
+        toast.error('Помилка');
       }
     }
   };
@@ -119,12 +119,12 @@ export const ProductCard = ({ product, onFavoriteToggle }) => {
         {/* Stock Badge */}
         {product.stock <= 5 && product.stock > 0 && (
           <div className="absolute top-2 left-2 bg-[#FFCC00] text-[#0A0A0A] px-2 py-1 text-xs font-bold uppercase">
-            Осталось {product.stock} шт
+            Залишилось {product.stock} шт
           </div>
         )}
         {product.stock === 0 && (
           <div className="absolute top-2 left-2 bg-[#FF3B30] text-white px-2 py-1 text-xs font-bold uppercase">
-            Нет в наличии
+            Немає в наявності
           </div>
         )}
       </div>

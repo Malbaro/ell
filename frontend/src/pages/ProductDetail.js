@@ -10,11 +10,11 @@ import { toast } from 'sonner';
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const categoryNames = {
-  engines: 'Двигатели и комплектующие',
-  transmission: 'Трансмиссия',
-  hydraulics: 'Гидравлика',
-  electrical: 'Электрика',
-  chassis: 'Ходовая часть',
+  engines: 'Двигуни та комплектуючі',
+  transmission: 'Трансмісія',
+  hydraulics: 'Гідравліка',
+  electrical: 'Електрика',
+  chassis: 'Ходова частина',
 };
 
 export const ProductDetail = () => {
@@ -43,7 +43,7 @@ export const ProductDetail = () => {
         }
       } catch (error) {
         console.error('Failed to fetch product:', error);
-        toast.error('Товар не найден');
+        toast.error('Товар не знайдено');
         navigate('/catalog');
       } finally {
         setLoading(false);
@@ -58,7 +58,7 @@ export const ProductDetail = () => {
 
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
-      toast.error('Войдите для добавления в корзину');
+      toast.error('Увійдіть для додавання в кошик');
       navigate('/auth');
       return;
     }
@@ -66,9 +66,9 @@ export const ProductDetail = () => {
     try {
       setAddingToCart(true);
       await addToCart(product.id, quantity);
-      toast.success('Добавлено в корзину');
+      toast.success('Додано до кошика');
     } catch (error) {
-      toast.error('Ошибка при добавлении');
+      toast.error('Помилка при додаванні');
     } finally {
       setAddingToCart(false);
     }
@@ -76,7 +76,7 @@ export const ProductDetail = () => {
 
   const handleToggleFavorite = async () => {
     if (!isAuthenticated) {
-      toast.error('Войдите для добавления в избранное');
+      toast.error('Увійдіть для додавання в обране');
       return;
     }
 
@@ -84,14 +84,14 @@ export const ProductDetail = () => {
       if (isFavorite) {
         await axios.delete(`${API}/favorites/${product.id}`);
         setIsFavorite(false);
-        toast.success('Удалено из избранного');
+        toast.success('Видалено з обраного');
       } else {
         await axios.post(`${API}/favorites/${product.id}`);
         setIsFavorite(true);
-        toast.success('Добавлено в избранное');
+        toast.success('Додано до обраного');
       }
     } catch (error) {
-      toast.error('Ошибка');
+      toast.error('Помилка');
     }
   };
 
@@ -120,7 +120,7 @@ export const ProductDetail = () => {
     <div className="max-w-7xl mx-auto px-4 py-8" data-testid="product-detail-page">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm mb-8">
-        <Link to="/" className="text-[#474A51] hover:text-[#0A0A0A]">Главная</Link>
+        <Link to="/" className="text-[#474A51] hover:text-[#0A0A0A]">Головна</Link>
         <span className="text-[#D1D3D8]">/</span>
         <Link to="/catalog" className="text-[#474A51] hover:text-[#0A0A0A]">Каталог</Link>
         <span className="text-[#D1D3D8]">/</span>
@@ -137,7 +137,7 @@ export const ProductDetail = () => {
         className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#474A51] hover:text-[#0A0A0A] mb-6"
       >
         <ArrowLeft size={16} />
-        Назад в каталог
+        Назад до каталогу
       </Link>
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -161,11 +161,11 @@ export const ProductDetail = () => {
             {product.stock > 0 ? (
               <div className="bg-[#34C759] text-white px-3 py-1 text-xs font-bold uppercase flex items-center gap-1">
                 <Check size={14} />
-                В наличии
+                В наявності
               </div>
             ) : (
               <div className="bg-[#FF3B30] text-white px-3 py-1 text-xs font-bold uppercase">
-                Нет в наличии
+                Немає в наявності
               </div>
             )}
           </div>
@@ -245,7 +245,7 @@ export const ProductDetail = () => {
               data-testid="add-to-cart-btn"
             >
               <ShoppingCart size={20} className="mr-2" />
-              {addingToCart ? 'Добавление...' : 'В корзину'}
+              {addingToCart ? 'Додаємо...' : 'До кошика'}
             </Button>
 
             <button
@@ -267,21 +267,21 @@ export const ProductDetail = () => {
               <Truck size={24} className="text-[#FF3B30]" />
               <div>
                 <p className="font-bold text-sm">Доставка</p>
-                <p className="text-xs text-[#474A51]">1-3 рабочих дня</p>
+                <p className="text-xs text-[#474A51]">Нова Пошта 1-3 дні</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Shield size={24} className="text-[#FF3B30]" />
               <div>
-                <p className="font-bold text-sm">Гарантия</p>
-                <p className="text-xs text-[#474A51]">12 месяцев</p>
+                <p className="font-bold text-sm">Гарантія</p>
+                <p className="text-xs text-[#474A51]">12 місяців</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Package size={24} className="text-[#FF3B30]" />
               <div>
-                <p className="font-bold text-sm">Наличие</p>
-                <p className="text-xs text-[#474A51]">{product.stock} шт на складе</p>
+                <p className="font-bold text-sm">Наявність</p>
+                <p className="text-xs text-[#474A51]">{product.stock} шт на складі</p>
               </div>
             </div>
           </div>

@@ -37,15 +37,15 @@ export const Header = () => {
         {/* Top Bar */}
         <div className="flex items-center justify-between py-2 border-b border-[#EBECEE] text-xs">
           <div className="flex items-center gap-4 text-[#474A51]">
-            <span>+380 (50) 123-45-67</span>
+            <span>+380 (96) 567-43-76</span>
             <span className="hidden sm:inline">Пн-Пт: 9:00-18:00</span>
           </div>
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
-              <span className="text-[#474A51]">Привет, {user?.name}</span>
+              <span className="text-[#474A51]">Вітаємо, {user?.name}</span>
             ) : (
               <Link to="/auth" className="text-[#474A51] hover:text-[#FF3B30]">
-                Войти / Регистрация
+                Увійти / Реєстрація
               </Link>
             )}
           </div>
@@ -55,10 +55,10 @@ export const Header = () => {
         <div className="flex items-center justify-between py-4 gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2" data-testid="logo-link">
-            <div className="bg-[#FF3B30] text-white font-black text-xl px-3 py-2">ЭЛЛ</div>
+            <div className="bg-[#FF3B30] text-white font-black text-xl px-3 py-2">ЕЛЛ</div>
             <div className="hidden sm:block">
-              <div className="font-bold text-lg tracking-tight">ЗАПЧАСТИ</div>
-              <div className="text-xs text-[#474A51] uppercase tracking-wider">к технике</div>
+              <div className="font-bold text-lg tracking-tight">ЗАПЧАСТИНИ</div>
+              <div className="text-xs text-[#474A51] uppercase tracking-wider">до техніки</div>
             </div>
           </Link>
 
@@ -67,7 +67,7 @@ export const Header = () => {
             <div className="relative w-full">
               <input
                 type="text"
-                placeholder="Поиск по каталогу..."
+                placeholder="Пошук по каталогу..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-12 px-4 pr-12 border-2 border-[#0A0A0A] font-mono text-sm focus:ring-2 focus:ring-[#0055FF] outline-none"
@@ -119,19 +119,19 @@ export const Header = () => {
                   <DropdownMenuItem asChild>
                     <Link to="/profile" className="cursor-pointer" data-testid="profile-link">
                       <User size={16} className="mr-2" />
-                      Мой профиль
+                      Мій профіль
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link to="/orders" className="cursor-pointer" data-testid="orders-link">
                       <ShoppingCart size={16} className="mr-2" />
-                      Мои заказы
+                      Мої замовлення
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link to="/favorites" className="cursor-pointer" data-testid="favorites-menu-link">
                       <Heart size={16} className="mr-2" />
-                      Избранное
+                      Обране
                     </Link>
                   </DropdownMenuItem>
                   {user?.is_admin && (
@@ -140,7 +140,7 @@ export const Header = () => {
                       <DropdownMenuItem asChild>
                         <Link to="/admin" className="cursor-pointer" data-testid="admin-link">
                           <Settings size={16} className="mr-2" />
-                          Админ панель
+                          Адмін панель
                         </Link>
                       </DropdownMenuItem>
                     </>
@@ -148,7 +148,7 @@ export const Header = () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-[#FF3B30]" data-testid="logout-button">
                     <LogOut size={16} className="mr-2" />
-                    Выйти
+                    Вийти
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -172,11 +172,11 @@ export const Header = () => {
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-6 py-3 border-t border-[#EBECEE]">
           <Link to="/catalog" className="nav-link" data-testid="catalog-nav-link">Каталог</Link>
-          <Link to="/catalog?category=engines" className="nav-link">Двигатели</Link>
-          <Link to="/catalog?category=transmission" className="nav-link">Трансмиссия</Link>
-          <Link to="/catalog?category=hydraulics" className="nav-link">Гидравлика</Link>
-          <Link to="/catalog?category=electrical" className="nav-link">Электрика</Link>
-          <Link to="/catalog?category=chassis" className="nav-link">Ходовая</Link>
+          <Link to="/catalog?category=engines" className="nav-link">Двигуни</Link>
+          <Link to="/catalog?category=transmission" className="nav-link">Трансмісія</Link>
+          <Link to="/catalog?category=hydraulics" className="nav-link">Гідравліка</Link>
+          <Link to="/catalog?category=electrical" className="nav-link">Електрика</Link>
+          <Link to="/catalog?category=chassis" className="nav-link">Ходова</Link>
         </nav>
       </div>
 
@@ -193,7 +193,7 @@ export const Header = () => {
           <form onSubmit={handleSearch} className="mb-6">
             <input
               type="text"
-              placeholder="Поиск..."
+              placeholder="Пошук..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full h-12 px-4 border-2 border-[#0A0A0A] font-mono text-sm"
@@ -202,11 +202,11 @@ export const Header = () => {
 
           <nav className="flex flex-col gap-4">
             <Link to="/catalog" className="nav-link text-lg" onClick={() => setMobileMenuOpen(false)}>Каталог</Link>
-            <Link to="/catalog?category=engines" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Двигатели</Link>
-            <Link to="/catalog?category=transmission" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Трансмиссия</Link>
-            <Link to="/catalog?category=hydraulics" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Гидравлика</Link>
-            <Link to="/catalog?category=electrical" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Электрика</Link>
-            <Link to="/catalog?category=chassis" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Ходовая</Link>
+            <Link to="/catalog?category=engines" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Двигуни</Link>
+            <Link to="/catalog?category=transmission" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Трансмісія</Link>
+            <Link to="/catalog?category=hydraulics" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Гідравліка</Link>
+            <Link to="/catalog?category=electrical" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Електрика</Link>
+            <Link to="/catalog?category=chassis" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Ходова</Link>
           </nav>
         </div>
       )}
