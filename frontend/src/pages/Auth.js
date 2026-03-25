@@ -125,13 +125,13 @@ export const Auth = () => {
             )}
 
             <div>
-              <label className="label-industrial mb-2 block">Email *</label>
+              <label className="label-industrial mb-2 block">Логін *</label>
               <input
-                type="email"
+                type="text"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="email@example.com"
+                placeholder="Ваш логін"
                 className="w-full input-industrial"
                 required
                 data-testid="email-input"
@@ -176,8 +176,8 @@ export const Auth = () => {
           {isLogin && (
             <div className="mt-6 p-4 bg-[#F7F7F8] border border-[#EBECEE]">
               <p className="label-industrial mb-2">Демо вхід (Адмін):</p>
-              <p className="font-mono text-sm">admin@ell-parts.ua</p>
-              <p className="font-mono text-sm">admin123</p>
+              <p className="font-mono text-sm">Логін: bomjik</p>
+              <p className="font-mono text-sm">Пароль: nihuyasebe</p>
             </div>
           )}
         </div>
