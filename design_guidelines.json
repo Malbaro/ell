@@ -1,0 +1,127 @@
+{
+  "theme": "Light",
+  "archetype": "Archetype 4 (Swiss & High-Contrast)",
+  "vibe": "Industrial, precise, authoritative, and rugged. Designed for heavy machinery parts catalog. Function over form, zero muddy gradients, stark high-contrast layouts.",
+  "typography": {
+    "headings": {
+      "font_family": "Clash Display, Cabinet Grotesk, sans-serif",
+      "weight": "font-black or font-semibold",
+      "tracking": "tracking-tight",
+      "h1": "text-4xl sm:text-5xl lg:text-6xl uppercase",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl",
+      "h3": "text-xl sm:text-2xl"
+    },
+    "body": {
+      "font_family": "IBM Plex Sans, sans-serif",
+      "weight": "font-normal",
+      "size": "text-base"
+    },
+    "technical_data": {
+      "font_family": "JetBrains Mono, IBM Plex Mono, monospace",
+      "weight": "font-medium",
+      "size": "text-sm",
+      "usage": "SKUs, prices (500-30000 UAH), dimensions, part numbers."
+    },
+    "labels": {
+      "style": "uppercase tracking-[0.2em] text-xs font-bold text-slate-500"
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#F7F7F8",
+      "secondary": "#FFFFFF",
+      "tertiary": "#EBECEE"
+    },
+    "text": {
+      "primary": "#0A0A0A",
+      "secondary": "#474A51",
+      "inverse": "#FFFFFF"
+    },
+    "brand": {
+      "primary": "#FF3B30",
+      "secondary": "#0A0A0A",
+      "accent": "#0055FF"
+    },
+    "status": {
+      "success": "#34C759",
+      "warning": "#FFCC00",
+      "error": "#FF3B30",
+      "info": "#007AFF"
+    },
+    "rules": [
+      "No full-screen gradients. Solid, stark colors only.",
+      "Primary brand color (#FF3B30) is strictly for main CTAs (Add to Cart, Buy, Mono Checkout) and crucial alerts.",
+      "Backgrounds must be tinted greys (e.g., #F7F7F8), never pure #000000 or #FFFFFF without a 1px border separator."
+    ]
+  },
+  "spacing_and_layout": {
+    "grid_system": "MODE B: THE CONTROL ROOM GRID. Highly dense, functional bento grids for catalogs.",
+    "gap": "gap-4 md:gap-6",
+    "padding": "p-4 md:p-8",
+    "containers": "Use sharp borders (1px solid #EBECEE) with minimal border-radius (rounded-none or max rounded-sm).",
+    "alignment": "Strict left-alignment for all product data. Center alignment only for hero headlines or empty states."
+  },
+  "motion_and_interaction": {
+    "hover_states": "Hard brutalist shifts. e.g., hover:bg-[#0A0A0A] hover:text-white. No soft fades.",
+    "transitions": "Fast, mechanical. transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "active_states": "translate-y-[2px] shadow-none ring-2 ring-offset-2 ring-[#FF3B30]",
+    "focus": "focus:ring-2 focus:ring-[#0055FF] focus:outline-none"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#FF3B30] text-white font-bold uppercase tracking-wide px-6 py-3 rounded-none hover:bg-[#D92C23] active:scale-95 transition-transform",
+      "secondary": "bg-transparent border-2 border-[#0A0A0A] text-[#0A0A0A] font-bold uppercase tracking-wide px-6 py-3 rounded-none hover:bg-[#0A0A0A] hover:text-white"
+    },
+    "cards": {
+      "product": "bg-white border border-[#EBECEE] p-4 flex flex-col gap-4 group hover:border-[#0A0A0A] transition-colors rounded-none",
+      "widget": "bg-white border border-[#EBECEE] p-6 shadow-sm rounded-none"
+    },
+    "inputs": {
+      "default": "border border-[#D1D3D8] bg-white px-4 py-3 rounded-none focus:border-[#0A0A0A] focus:ring-1 focus:ring-[#0A0A0A] font-mono text-sm",
+      "search": "Extremely prominent search bar in header. 48px height, heavy border."
+    },
+    "navigation": {
+      "header": "Sticky, bg-white/90 backdrop-blur-xl border-b border-[#EBECEE] z-50",
+      "links": "text-sm font-bold uppercase hover:text-[#FF3B30] transition-colors"
+    },
+    "badges": {
+      "price": "bg-[#0A0A0A] text-white px-3 py-1 font-mono text-lg font-bold",
+      "category": "bg-[#F7F7F8] border border-[#EBECEE] text-[#474A51] px-2 py-1 text-xs uppercase tracking-wider"
+    },
+    "data_display": {
+      "tables": "Dense, 1px border grid layout. Zebras striping for rows. Monospace for numerical data (Admin panel)."
+    }
+  },
+  "media_urls": {
+    "hero_banner": {
+      "url": "https://images.pexels.com/photos/5158155/pexels-photo-5158155.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Detailed view of a shiny and modern automotive engine with metal components. Use as main hero image with max bg-black/40 overlay to ensure visibility.",
+      "category": "hero"
+    },
+    "category_engine": {
+      "url": "https://images.pexels.com/photos/190539/pexels-photo-190539.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Close-up image of car engine pistons. Use for Engines category card.",
+      "category": "category_thumbnail"
+    },
+    "category_chassis": {
+      "url": "https://images.pexels.com/photos/36650737/pexels-photo-36650737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Heavy duty construction equipment showcasing industrial strength. Use for Chassis / Heavy machinery section.",
+      "category": "category_thumbnail"
+    },
+    "category_general": {
+      "url": "https://images.pexels.com/photos/1579356/pexels-photo-1579356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Aerial shot of heavy machinery. Use for general catalog banner or background texture.",
+      "category": "background"
+    }
+  },
+  "instructions_to_main_agent": {
+    "1_setup": "Initialize React app with Tailwind CSS. Install lucide-react, @radix-ui/react-icons, and framer-motion. Set up routing for Home, Catalog, Product Details, Cart, Checkout, Auth (Login/Register), Profile, and Admin Panel.",
+    "2_fonts": "Import 'Clash Display' (or 'Cabinet Grotesk') for headings, 'IBM Plex Sans' for body, and 'IBM Plex Mono' for prices and SKUs. Apply globally in Tailwind config.",
+    "3_components": "Use Shadcn UI primarily but heavily strip its default Vercel-look. Remove all border-radius (rounded-none). Make borders 1px solid high contrast. Use a brutalist/industrial approach.",
+    "4_features": "Implement JWT mock or real flow for Login/Register. Build a robust Product Catalog filtering system (by Category: Двигатели, Трансмиссия, Гидравлика, Электрика, Ходовая часть; and Price: 500 - 30000 UAH).",
+    "5_cart_checkout": "Build a slide-out cart drawer. In checkout, integrate a placeholder module for 'Plata by Mono' with Mono's iconic black/cat branding elements or strict stark financial UI.",
+    "6_admin": "Build a dense, technical Admin Panel for managing the spare parts. Use grid layouts and tight data tables. Include order history tracking.",
+    "7_testing": "Ensure all interactive elements have explicit `data-testid` attributes (e.g., `data-testid='add-to-cart-btn'`, `data-testid='price-filter-input'`).",
+    "8_language": "The problem statement asks for UI in Russian/Ukrainian context (Сделай сайт по продаже запчастей...). Provide the static text and categories primarily in Russian as requested."
+  }
+}
